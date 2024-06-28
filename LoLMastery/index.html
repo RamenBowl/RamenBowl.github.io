@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Example</title>
+</head>
+<body>
+    <button onclick="sendMessage()">Send Message</button>
+    <div id="messageContainer"></div>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:8765');
+
+        socket.onmessage = function(event) {
+            document.getElementById('messageContainer').innerHTML = event.data;
+        };
+
+        function sendMessage() {
+            const message = 'Hello from client';
+            socket.send(message);
+        }
+    </script>
+</body>
+</html>
